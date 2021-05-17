@@ -27,7 +27,7 @@ for(var i = 0; i < enemyNames.length; i++) {
 
   var fight = function(enemyName) {
     // repeat and execute as long as the enemy-robot is alive 
-    while(enemyHealth > 0) {
+    while (playerHealth > 0 && enemyHealth > 0) {
       // place fight function code block here . . .
 
        // Alert players that they are starting the round
@@ -46,8 +46,9 @@ for(var i = 0; i < enemyNames.length; i++) {
 
     // check enemy's health
     if (enemyHealth <= 0) {
-      window.alert(enemyName + " has died!");
-    } else {
+        window.alert(enemyName + " has died!");
+        break;
+      } else {
       window.alert(enemyName + " still has " + enemyHealth + " health left.");
     }
 
@@ -60,6 +61,7 @@ for(var i = 0; i < enemyNames.length; i++) {
     // check player's health
     if (playerHealth <= 0) {
       window.alert(playerName + " has died!");
+      break;
     } else {
       window.alert(playerName + " still has " + playerHealth + " health left.");
     }
