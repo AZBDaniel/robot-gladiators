@@ -1,5 +1,4 @@
 /* GAME FUNCTIONS */
-
 // function to generate a random numeric value
 var randomNumber = function (min, max) {
   var value = Math.floor(Math.random() * (max - min + 1) + min);
@@ -91,6 +90,7 @@ var fight = function (enemy) {
 var startGame = function () {
   // reset player stats
   playerInfo.reset();
+  playerInfo.name = getPlayerName();
 
   // fight each enemy robot by looping over them and fighting them one at a time
   for (var i = 0; i < enemyInfo.length; i++) {
@@ -151,6 +151,7 @@ var endGame = function () {
   }
 };
 
+
 // go to shop between battles function
 var shop = function () {
   // ask player what they'd like to do
@@ -158,18 +159,17 @@ var shop = function () {
     'Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one "REFILL", "UPGRADE", or "LEAVE" to make a choice.'
   );
 
+
   // use switch case to carry out action
-  switch (shopOptionPrompt) {
-    case 'REFILL':
-    case 'refill':
+  switch (parseInt(shopOptionPrompt)) {
+    case 1:
       playerInfo.refillHealth();
       break;
-    case 'UPGRADE':
-    case 'upgrade':
+    case 2:
       playerInfo.upgradeAttack();
       break;
-    case 'LEAVE':
-    case 'leave':
+    case  3:
+
       window.alert('Leaving the store.');
 
       // do nothing, so function will end
@@ -198,10 +198,9 @@ var getPlayerName = function () {
   return name
 }
 
-
 // player information
 var playerInfo = {
-  name: getPlayerName(),
+  name: "",
   health: 100,
   attack: 10,
   money: 10,
@@ -209,6 +208,7 @@ var playerInfo = {
     this.health = 100;
     this.money = 10;
     this.attack = 10;
+    this.name = "";
   },
   refillHealth: function () {
     if (this.money >= 7) {
@@ -254,6 +254,7 @@ console.log(enemyInfo[0].name);
 console.log(enemyInfo[0]['attack']);
 
 /* END GAME INFORMATION / VARIABLES */
+
 
 /* RUN GAME */
 startGame();
